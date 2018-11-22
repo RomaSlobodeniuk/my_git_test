@@ -1,2 +1,2 @@
 # my_git_test
-Some description
+Some description new text
