@@ -1,0 +1,39 @@
+<div>
+    <div class="jumbotron">
+        <h1 class="display-4">{{greetings}}</h1>
+        <p class="lead">{{description}}</p>
+        <hr class="my-4">
+        <p>{{additional}}</p>
+        <a class="btn btn-primary btn-lg" href="{{link}}" role="button" target="_blank">{{link_name}}</a>
+    </div>
+    <div class="jumbotron">
+        <div class="jumbotron">
+            <div class="row justify-content-center">
+                <form class="col-sm-6" id="main-form" name="form" method="post" enctype="multipart/form-data" action="">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="pass_1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input type="password" name="pass_2" class="form-control" id="exampleInputPassword2" placeholder="Confirm Your Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Choose file to load</label>
+                        <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="remember_me" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

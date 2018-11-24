@@ -1,0 +1,69 @@
+{
+  "title": "Home Page",
+  "greetings": "Hello World!",
+  "description": "This is the Home Page Description",
+  "additional": "It uses utility classes for typography and spacing to space content out within the larger container.",
+  "link": "https://google.com.ua",
+  "link_name": "Go to Google",
+  "page_content": {
+    "slider": {
+      "link1": {
+        "src": "1.jpg?auto=yes&bg=666&fg=444&text=First slide",
+        "alt": "First slide"
+      },
+      "link2": {
+        "src": "2.jpg?auto=yes&bg=666&fg=444&text=Second slide",
+        "alt": "Second slide"
+
+      },
+      "link3": {
+        "src": "3.jpg?auto=yes&bg=666&fg=444&text=Third slide",
+        "alt": "Third slide"
+
+      },
+      "link4": {
+        "src": "4.jpeg?auto=yes&bg=666&fg=444&text=Fourth slide",
+        "alt": "Fourth slide"
+
+      },
+      "link5": {
+        "src": "5.jpg?auto=yes&bg=666&fg=444&text=Fifth slide",
+        "alt": "Fifth slide"
+
+      },
+      "link6": {
+        "src": "6.jpg?auto=yes&bg=666&fg=444&text=Sixth slide",
+        "alt": "Sixth slide"
+
+      },
+      "link7": {
+        "src": "7.jpg?auto=yes&bg=666&fg=444&text=Sevens slide",
+        "alt": "Sevens slide"
+
+      },
+      "link8": {
+        "src": "8.jpg?auto=yes&bg=666&fg=444&text=Eighth slide",
+        "alt": "Eighth slide"
+
+      },
+      "link9": {
+        "src": "9.png?auto=yes&bg=666&fg=444&text=Ninth slide",
+        "alt": "Ninth slide"
+
+      },
+      "link10": {
+        "src": "10.jpg?auto=yes&bg=666&fg=444&text=Tenth slide",
+        "alt": "Tenth slide"
+
+      },
+      "link11": {
+        "src": "11.png?auto=yes&bg=666&fg=444&text=Eleventh slide",
+        "alt": "Eleventh slide"
+
+      }
+    }
+  },
+  "footer": {
+    "heading": "Home Page Footer Heading"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Login Page",
+  "greetings": "Hello World From Login Page!",
+  "description": "This is the Login Page Description",
+  "additional": "It uses utility classes for typography and spacing to space content out within the larger container.",
+  "link": "https://www.instagram.com/",
+  "link_name": "Go to Instagram",
+  "page_content": {},
+  "footer": {
+    "heading": "Login Page Footer Heading"
+  }
+}

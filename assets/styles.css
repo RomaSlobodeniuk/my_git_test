@@ -1,0 +1,15 @@
+.purple {
+    color: purple;
+}
+
+.red {
+    color: red !important;
+}
+
+#article-1 {
+    color: white;
+}
+
+.white {
+    color: inherit;
+}
