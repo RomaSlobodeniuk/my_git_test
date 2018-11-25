@@ -13,3 +13,8 @@
 .white {
     color: inherit;
 }
+
+.jumbotron {
+    margin-bottom: 0;
+    border-bottom: 1px solid gray;
+}

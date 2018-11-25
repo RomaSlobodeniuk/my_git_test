@@ -10,7 +10,7 @@ if ($page === 'logout') {
 $fileName = "./source/$page.json";
 $sourceData = getSourceData($fileName);
 
-$header = getHeader($sourceData);
+$header = getHeader($sourceData, $page);
 $mainContent = getMainContent($sourceData, $page);
 $footer = getFooter($sourceData);
 

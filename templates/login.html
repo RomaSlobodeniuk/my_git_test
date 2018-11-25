@@ -7,32 +7,65 @@
         <a class="btn btn-primary btn-lg" href="{{link}}" role="button" target="_blank">{{link_name}}</a>
     </div>
     <div class="jumbotron">
-        <div class="jumbotron">
-            <div class="row justify-content-center">
-                <form class="col-sm-6" id="main-form" name="form" method="post" enctype="multipart/form-data" action="">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div class="row justify-content-center">
+            <form class="col-sm-6" id="login-form" name="form" method="post" enctype="multipart/form-data" action="">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelpLogin" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" name="remember_me" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                </div>
+                <button type="submit" name="form_type" class="btn btn-primary" value="login">Login</button>
+            </form>
+            <form class="col-sm-6" id="register-form" name="form" method="post" enctype="multipart/form-data" action="">
+                <div class="form-group">
+                    <label for="register-email">Email address</label>
+                    <input name="email" type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelpRegister" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" name="pass_1" class="form-control" id="password1" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="pass_2" class="form-control" id="password2" placeholder="Confirm Your Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="logoFile">Choose your logo</label>
+                    <input name="file" type="file" class="form-control-file" id="logoFile">
+                    <small id="fileHelper" class="form-text text-muted">Only files with 'png','jpg','jpeg' extension are allowed.</small>
+                </div>
+                <button type="submit" name="form_type" class="btn btn-primary" value="register">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="modals">
+        <!-- Modal -->
+        <button id="invalid-file" style="display: none" type="button" class="btn btn-primary" data-toggle="modal" data-target="#invalid-file-modal">Modal Button</button>
+        <div id="invalid-file-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" name="pass_1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                    <div class="modal-body">
+                        ...
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword2">Confirm Password</label>
-                        <input type="password" name="pass_2" class="form-control" id="exampleInputPassword2" placeholder="Confirm Your Password" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Choose file to load</label>
-                        <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" name="remember_me" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>

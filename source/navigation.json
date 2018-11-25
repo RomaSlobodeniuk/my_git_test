@@ -3,18 +3,22 @@
   "links": {
     "link_1": {
       "name": "Home",
+      "key": "index",
       "href": "index.php"
     },
     "link_2": {
       "name": "Articles",
+      "key": "articles",
       "href": "index.php?page=articles"
     },
     "link_3": {
       "name": "Login",
+      "key": "login",
       "href": "index.php?page=login"
     },
     "link_4": {
       "name": "Logout",
+      "key": "logout",
       "href": "index.php?page=logout"
     }
   }
