@@ -14,6 +14,4 @@ $header = getHeader($sourceData, $page);
 $mainContent = getMainContent($sourceData, $page);
 $footer = getFooter($sourceData);
 
-echo $header;
-echo $mainContent;
-echo $footer;
+echo $header, $mainContent, $footer;
