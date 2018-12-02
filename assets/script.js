@@ -8,7 +8,7 @@ setTimeout(function () {
 var loginTimestamp = $.cookie("login_timestamp");
 if (loginTimestamp !== undefined) {
     var allowedTime = $.cookie("allowed_session_time");
-    var linkLogout = $('.navbar-nav a[href$="index.php?page=logout"]');
+    var linkLogout = $('.navbar-nav a[href$="/15_git/logout"]');
     var text = linkLogout.text();
     function triggerSessionCheck() {
         return setInterval(function () {
