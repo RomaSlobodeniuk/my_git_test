@@ -356,15 +356,17 @@ function getMainContent($data, $template)
         $mainTemplate = str_replace('{{articles_title}}', $pageContent['title'], $mainTemplate);
         $mainTemplate = str_replace('{{articles_description}}', $pageContent['description'], $mainTemplate);
         $current = !empty($_GET['current']) ? $_GET['current'] : 1;
-        $perPage = 3;
+        $perPage = 2;
 
-        $start = $current == 1 ? $current : ($current * $perPage) - ($perPage - 1) ;
-        $end = $start + $perPage;
+        $articles = $pageContent['articles'];
+        $allCount = count($articles);
+
+        $start = ($current - 1) * $perPage;
+        $end = (($current * $perPage) < $allCount) ? $current * $perPage : $allCount;
 
         $articlesHtml = '';
         $articleFileName = './templates/articles/article.html';
         $articleTemplateHtml = getSourceContent($articleFileName);
-        $articles = $pageContent['articles'];
         for ($i = $start; $i < $end; $i++ ) {
             $articleKey = 'article_' . $i;
             if (empty($articles[$articleKey])) {
@@ -385,13 +387,13 @@ function getMainContent($data, $template)
         $pageLinkFileName = './templates/header/page_link.html';
         $pageLinkTemplateHtml = getSourceContent($pageLinkFileName);
         $pagEnd = round(count($pageContent['articles'])/$perPage);
-        for ($i = 1; $i < $pagEnd + 1; $i++) {
+        for ($i = 0, $j = 0; $i < $allCount; $i += $perPage, $j++) {
             $pageLinkTemplate = $pageLinkTemplateHtml;
-            $active = $current == $i ? 'active' : '';
-            $additional = $current == $i ? '<span class="sr-only">(current)</span>' : '';
+            $active = $current == $j + 1 ? 'active' : '';
+            $additional = $current == $j + 1 ? '<span class="sr-only">(current)</span>' : '';
             $pageLinkTemplate = str_replace('{{active}}', $active, $pageLinkTemplate);
-            $pageLinkTemplate = str_replace('{{href}}', ROOT_PATH . 'articles/' . $i, $pageLinkTemplate);
-            $pageLinkTemplate = str_replace('{{number}}', $i, $pageLinkTemplate);
+            $pageLinkTemplate = str_replace('{{href}}', ROOT_PATH . 'articles/' . ($j + 1), $pageLinkTemplate);
+            $pageLinkTemplate = str_replace('{{number}}', $j + 1, $pageLinkTemplate);
             $pageLinkTemplate = str_replace('{{current}}', $additional, $pageLinkTemplate);
             $paginationHtml .= $pageLinkTemplate;
         }

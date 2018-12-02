@@ -9,37 +9,37 @@
     "title": "Articles",
     "description": "This is a modified jumbotron that occupies the entire horizontal space of its parent.",
     "articles": {
-      "article_1": {
+      "article_0": {
         "name": "Black Humor 1",
         "src": "assets/images/black-humor_o_817783.jpg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "date": "2016.03.12"
       },
-      "article_2": {
+      "article_1": {
         "name": "Smiled Face 2",
         "src": "assets/images/download.jpeg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "date": "2017.04.15"
       },
-      "article_3": {
+      "article_2": {
         "name": "Cute Cat 3",
         "src": "assets/images/cat.jpg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "date": "2018.01.30"
       },
-      "article_4": {
+      "article_3": {
         "name": "Black Humor 4",
         "src": "assets/images/black-humor_o_817783.jpg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "date": "2016.03.12"
       },
-      "article_5": {
+      "article_4": {
         "name": "Smiled Face 5",
         "src": "assets/images/download.jpeg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "date": "2017.04.15"
       },
-      "article_6": {
+      "article_5": {
         "name": "Cute Cat 6",
         "src": "assets/images/cat.jpg",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
