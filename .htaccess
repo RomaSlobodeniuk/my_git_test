@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^([\w]+)$ index.php?page=$1 [QSA]
+RewriteRule ^([\w]+)/([\d]+)$ index.php?page=$1&current=$2 [QSA]

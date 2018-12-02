@@ -4,22 +4,22 @@
     "link_1": {
       "name": "Home",
       "key": "index",
-      "href": "index.php"
+      "href": "index"
     },
     "link_2": {
       "name": "Articles",
       "key": "articles",
-      "href": "index.php?page=articles"
+      "href": "articles"
     },
     "link_3": {
       "name": "Login",
       "key": "login",
-      "href": "index.php?page=login"
+      "href": "login"
     },
     "link_4": {
       "name": "Logout",
       "key": "logout",
-      "href": "index.php?page=logout"
+      "href": "logout"
     }
   }
 }

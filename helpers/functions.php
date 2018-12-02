@@ -236,6 +236,7 @@ function getHeader($data, $page)
     $fileName = './templates/header/header.html';
     $header = getSourceContent($fileName);
     $header = str_replace('{{title}}', $data['title'], $header);
+    $header = str_replace('{{base_path}}', ROOT_PATH, $header);
     $navigation = getNavigation($page);
     $header = str_replace('{{navigation}}', $navigation, $header);
     $messages = getMessages();
@@ -308,7 +309,7 @@ function getNavigation($page)
         $linksTemplate = str_replace('{{active}}', $active, $linksTemplate);
         $linksTemplate = str_replace('{{is_active_additional}}', $additional, $linksTemplate);
         $linksTemplate = str_replace('{{name}}', $link['name'], $linksTemplate);
-        $linksTemplate = str_replace('{{href}}', $link['href'], $linksTemplate);
+        $linksTemplate = str_replace('{{href}}', ROOT_PATH . $link['href'], $linksTemplate);
         $linksHtml .= $linksTemplate;
     }
 
@@ -341,7 +342,7 @@ function getMainContent($data, $template)
             $active = $i === 0 ? 'active' : '';
             $indicatorsHtml .= '<li data-target="#carouselExampleControls" data-slide-to="' . $i . '" class="' . $active .'"></li>';
             $sliderTemplate = str_replace('{{active}}', $active, $sliderTemplate);
-            $sliderTemplate = str_replace('{{src}}', IMAGES_PATH . $slider['src'], $sliderTemplate);
+            $sliderTemplate = str_replace('{{src}}', ROOT_PATH . IMAGES_PATH . $slider['src'], $sliderTemplate);
             $sliderTemplate = str_replace('{{alt}}', $slider['alt'], $sliderTemplate);
             $sliderHtml .= $sliderTemplate;
             $i++;
@@ -354,20 +355,49 @@ function getMainContent($data, $template)
     if ($template === 'articles') {
         $mainTemplate = str_replace('{{articles_title}}', $pageContent['title'], $mainTemplate);
         $mainTemplate = str_replace('{{articles_description}}', $pageContent['description'], $mainTemplate);
+        $current = !empty($_GET['current']) ? $_GET['current'] : 1;
+        $perPage = 3;
+
+        $start = $current == 1 ? $current : ($current * $perPage) - ($perPage - 1) ;
+        $end = $start + $perPage;
 
         $articlesHtml = '';
         $articleFileName = './templates/articles/article.html';
         $articleTemplateHtml = getSourceContent($articleFileName);
-        foreach ($pageContent['articles'] as $article) {
+        $articles = $pageContent['articles'];
+        for ($i = $start; $i < $end; $i++ ) {
+            $articleKey = 'article_' . $i;
+            if (empty($articles[$articleKey])) {
+                continue;
+            }
+
             $articleTemplate = $articleTemplateHtml;
-            $articleTemplate = str_replace('{{src}}', $article['src'], $articleTemplate);
-            $articleTemplate = str_replace('{{name}}', $article['name'], $articleTemplate);
-            $articleTemplate = str_replace('{{text}}', $article['text'], $articleTemplate);
-            $articleTemplate = str_replace('{{date}}', $article['date'], $articleTemplate);
+            $articleTemplate = str_replace('{{src}}', ROOT_PATH . $articles[$articleKey]['src'], $articleTemplate);
+            $articleTemplate = str_replace('{{name}}', $articles[$articleKey]['name'], $articleTemplate);
+            $articleTemplate = str_replace('{{text}}', $articles[$articleKey]['text'], $articleTemplate);
+            $articleTemplate = str_replace('{{date}}', $articles[$articleKey]['date'], $articleTemplate);
             $articlesHtml .= $articleTemplate;
         }
 
         $mainTemplate = str_replace('{{articles}}', $articlesHtml, $mainTemplate);
+
+        $paginationHtml = '';
+        $pageLinkFileName = './templates/header/page_link.html';
+        $pageLinkTemplateHtml = getSourceContent($pageLinkFileName);
+        $pagEnd = round(count($pageContent['articles'])/$perPage);
+        for ($i = 1; $i < $pagEnd + 1; $i++) {
+            $pageLinkTemplate = $pageLinkTemplateHtml;
+            $active = $current == $i ? 'active' : '';
+            $additional = $current == $i ? '<span class="sr-only">(current)</span>' : '';
+            $pageLinkTemplate = str_replace('{{active}}', $active, $pageLinkTemplate);
+            $pageLinkTemplate = str_replace('{{href}}', ROOT_PATH . 'articles/' . $i, $pageLinkTemplate);
+            $pageLinkTemplate = str_replace('{{number}}', $i, $pageLinkTemplate);
+            $pageLinkTemplate = str_replace('{{current}}', $additional, $pageLinkTemplate);
+            $paginationHtml .= $pageLinkTemplate;
+        }
+
+
+        $mainTemplate = str_replace('{{pagination}}', $paginationHtml, $mainTemplate);
     }
 
     if ($template === 'login') {
