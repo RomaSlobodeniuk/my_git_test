@@ -386,7 +386,6 @@ function getMainContent($data, $template)
         $paginationHtml = '';
         $pageLinkFileName = './templates/header/page_link.html';
         $pageLinkTemplateHtml = getSourceContent($pageLinkFileName);
-        $pagEnd = round(count($pageContent['articles'])/$perPage);
         for ($i = 0, $j = 0; $i < $allCount; $i += $perPage, $j++) {
             $pageLinkTemplate = $pageLinkTemplateHtml;
             $active = $current == $j + 1 ? 'active' : '';
