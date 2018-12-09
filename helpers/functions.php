@@ -265,6 +265,27 @@ function getMessages()
     return $messagesHtml;
 }
 
+function getConnection()
+{
+    $params = require_once('./config/db.php');
+    $db = new \mysqli($params['host'], $params['user'], $params['password'], $params['database']);
+    $db->query("SET NAMES 'utf8'");
+    return $db;
+}
+
+function getLinks()
+{
+    $db = getConnection();
+    $result = $db->query("SELECT * FROM `navigation`");
+    $links = [];
+    while ($row = $result->fetch_assoc()) {
+        $links[] = $row;
+    }
+    
+    $db->close();
+    return $links;
+}
+
 function getNavigation($page)
 {
     $navigationFileName = './source/navigation.json';
@@ -292,20 +313,20 @@ function getNavigation($page)
     $linksFileName = './templates/header/links.html';
     $linksTemplateHtml = getSourceContent($linksFileName);
     $linksHtml = '';
-    $links = $navigationData['links'];
+    $links = getLinks();
     $isLoggedIn = empty($_SESSION['email']) ? false : true;
     foreach ($links as $key => $link) {
-        if ($isLoggedIn && $key === 'link_3') {
+        if ($isLoggedIn && $link['page_key'] === 'login') {
             continue;
         }
 
-        if (!$isLoggedIn && $key === 'link_4') {
+        if (!$isLoggedIn && $link['page_key'] === 'logout') {
             continue;
         }
 
         $linksTemplate = $linksTemplateHtml;
-        $active = $page === strtolower($link['key']) ? 'active' : '';
-        $additional = $page === strtolower($link['key']) ? '<span class="sr-only">(current)</span>' : '';
+        $active = $page === strtolower($link['page_key']) ? 'active' : '';
+        $additional = $page === strtolower($link['page_key']) ? '<span class="sr-only">(current)</span>' : '';
         $linksTemplate = str_replace('{{active}}', $active, $linksTemplate);
         $linksTemplate = str_replace('{{is_active_additional}}', $additional, $linksTemplate);
         $linksTemplate = str_replace('{{name}}', $link['name'], $linksTemplate);
